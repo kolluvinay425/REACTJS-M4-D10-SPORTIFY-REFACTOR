@@ -1,20 +1,25 @@
-import { Container, Row, Col, Nav } from "react-bootstrap";
+import { Container, Row, Col, Nav, Navbar } from "react-bootstrap";
 import NavbarSection from "./NavbarSection";
 import SportifyHome from "./SportifyHome";
-
+import SportifyAlbum from "./SportifyAlbum";
 const Sidebar = () => {
   return (
     <>
-      <Container className="h-auto" fluid>
+      <Container fluid>
         <Row>
-          <Col xs={2} className="p-0 " id="sidebar-wrapper">
+          <Col className="p-0 col-2 " id="sidebar-wrapper">
             <Nav
-              style={{ background: "#0c0d0c", height: "auto" }}
-              className="col-md-12 col-12 col-lg-12 d-none d-md-block sidebar"
+              style={{
+                background: "#0c0d0c",
+                height: "auto",
+                width: "auto",
+              }}
+              className="  d-none d-md-block sidebar "
               activeKey="/home"
               onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
             >
               <div className="sidebar-sticky"></div>
+              {/* <Navbar.Collapse id="responsive-navbar-nav"><Navbar.Collapse> */}
               <Nav.Item className="d-flex">
                 <Nav.Link className="text-light" href="/home">
                   <i className="bi bi-house-door"></i>
@@ -133,7 +138,11 @@ const Sidebar = () => {
             </Nav>
           </Col>
           <Col
-            xs={10}
+            xs={12}
+            sm={12}
+            md={10}
+            lg={10}
+            xl={10}
             id="page-content-wrapper"
             style={{ background: "#3a0505" }}
             className="p-0"
@@ -142,6 +151,7 @@ const Sidebar = () => {
             <Container>
               <SportifyHome />
             </Container>
+            <SportifyAlbum />
           </Col>
         </Row>
       </Container>

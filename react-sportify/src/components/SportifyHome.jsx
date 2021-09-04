@@ -22,11 +22,15 @@ const SportifyHome = () => {
       <Row>
         <h1 className="text-white">#ThrowbackThursday's</h1>
         {songs &&
-          songs.slice(0, 8).map((song) => (
-            <Col xs={2} md={4} lg={3}>
-              <Card className="mb-3" style={{ width: "200px" }}>
-                <Card.Img variant="top" src={song.artist.picture_small} />
-                <Card.Body>
+          songs.slice(0, 12).map((song) => (
+            <Col xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Card className="mr-2 mb-2 " style={{ background: "#443d3e4f" }}>
+                <Card.Img
+                  style={{ maxwidth: "100%" }}
+                  variant="top"
+                  src={song.artist.picture}
+                />
+                <Card.Body style={{ color: "white" }}>
                   <Card.Title>{song.title}</Card.Title>
                 </Card.Body>
               </Card>
