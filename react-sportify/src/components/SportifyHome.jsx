@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { Card, Row, Col } from "react-bootstrap";
+import SportifyAlbum from "./SportifyAlbum";
 
 const SportifyHome = () => {
   const [songs, setSongs] = useState([]);
+  const [singleSong, setSingleSong] = useState("");
+  const [select, setSelect] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,9 +26,10 @@ const SportifyHome = () => {
         <h1 className="text-white">#ThrowbackThursday's</h1>
         {songs &&
           songs.slice(0, 12).map((song) => (
-            <Col xs={12} sm={6} md={4} lg={3} xl={2}>
-              <Card className="mr-2 mb-2 " style={{ background: "#443d3e4f" }}>
+            <Col xs={12} sm={6} md={4} lg={3} xl={2} key={song.id}>
+              <Card className="mr-2 mb-2" style={{ background: "#443d3e4f" }}>
                 <Card.Img
+                  onClick={() => setSingleSong(song.album.id)}
                   style={{ maxwidth: "100%" }}
                   variant="top"
                   src={song.artist.picture}
@@ -36,6 +40,7 @@ const SportifyHome = () => {
               </Card>
             </Col>
           ))}
+        {singleSong && <SportifyAlbum albumId={singleSong} />}
       </Row>
     </div>
   );
